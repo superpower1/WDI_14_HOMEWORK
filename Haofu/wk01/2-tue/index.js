@@ -10,10 +10,8 @@ var dinner = prompt(`Hi, ${username}. What do you want for dinner?
 
 if ((dinner === "steak")||(dinner === "pork chops")) {
   alert("Vegans beware!");
-}
-else if ((dinner === "fruit salad")||(dinner === "tofurkey")) {
+}else if ((dinner === "fruit salad")||(dinner === "tofurkey")) {
   alert("This cuisine is vegan friendly.");
-}
-else {
+}else {
   alert("Wrong input");
 }
