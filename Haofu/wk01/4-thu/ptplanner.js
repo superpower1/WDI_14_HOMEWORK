@@ -13,7 +13,7 @@ const GlenWaverlyLine = ["Flagstaff", "Melbourne Central", "Parliament", "Richmo
 const SandringhamLine = ["Southern Cross", "Richmond", "South Yarra", "Prahran", "Windsor"];
 
 /*
-* uniq is a function to delete duplicate elements in a array
+* uniq is a function to delete duplicate elements in a array, be careful because it need to sort the Array
 * param: arr
 */
 uniq = (arr) => {
@@ -69,51 +69,47 @@ document.querySelector('button').addEventListener("click", () => {
 
   if (orig === dest) {
     console.log("You don't need to travel at all!");
+    document.querySelector('.result').innerHTML = "You don't need to travel at all!";
   } else {
 
     let origLine, destLine;
-
-    // if origin or destination station is Richmond, one must be travel within a sub line
-    if (orig==="Richmond") {
-      for (var key in allLines) {
-        if (allLines[key].indexOf(dest)>=0) destLine = allLines[key];
-      }
-      printRoute(buildRoute(destLine, orig, dest));
-    } else if (dest==="Richmond") {
-      for (var key in allLines) {
-        if (allLines[key].indexOf(orig)>=0) origLine = allLines[key];
-      }
-      printRoute(buildRoute(origLine, orig, dest));
+    if ((AlameinLine.indexOf(orig)>=0)&&(AlameinLine.indexOf(dest)>=0)) {
+      printRoute(buildRoute(AlameinLine, orig, dest));
+    } else if ((GlenWaverlyLine.indexOf(orig)>=0)&&(GlenWaverlyLine.indexOf(dest)>=0)) {
+      printRoute(buildRoute(GlenWaverlyLine, orig, dest));
+    } else if ((SandringhamLine.indexOf(orig)>=0)&&(SandringhamLine.indexOf(dest)>=0)) {
+      printRoute(buildRoute(SandringhamLine, orig, dest));
     } else {
       for (var key in allLines) {
         if (allLines[key].indexOf(orig)>=0) origLine = allLines[key];
         if (allLines[key].indexOf(dest)>=0) destLine = allLines[key];
       }
-      let firstHalf = origLine.slice(origLine.indexOf(orig), origLine.indexOf("Richmond"))
-      console.log(firstHalf);
-
+      let firstHalf = buildRoute(origLine, orig, "Richmond");
+      let secondHalf = buildRoute(destLine, "Richmond", dest);
+      let combineRoute = firstHalf.concat(secondHalf).filter(function(item, pos, ary) {
+          return !pos || item != ary[pos - 1];
+      });
+      printRoute(combineRoute);
     }
 
   }
 
-  if ((AlameinLine.indexOf(orig)>=0)&&(AlameinLine.indexOf(dest)>=0)) {
-    printRoute(buildRoute(AlameinLine, orig, dest));
-  } else if ((GlenWaverlyLine.indexOf(orig)>=0)&&(GlenWaverlyLine.indexOf(dest)>=0)) {
-    printRoute(buildRoute(GlenWaverlyLine, orig, dest));
-  } else if ((SandringhamLine.indexOf(orig)>=0)&&(SandringhamLine.indexOf(dest)>=0)) {
-    printRoute(buildRoute(SandringhamLine, orig, dest));
-  }
 });
 
+/* buildRoute takes an array and a start point and an end point, returns a new array
+* param: route
+* param: orig
+* param: dest
+*/
 buildRoute = (route, orig, dest) => {
   let result = [];
   let start = route.indexOf(orig);
   let end = route.indexOf(dest);
 
   if (start>end) {
-    result = route.slice(end, start).reverse();
+    result = route.slice(end, start+1).reverse();
   } else {
-    result = route.slice(start, end);
+    result = route.slice(start, end+1);
   }
   return result;
 }
@@ -132,6 +128,11 @@ printRoute = (route) => {
     }
   }
   console.log(result);
-  console.log(`${route.length} stops total`);
-
+  console.log(`${route.length-1} stops total`);
+  document.querySelector('.result').innerHTML = `
+    <p>
+      ${result} </br>
+      ${route.length-1} stops total
+    </p>
+    `;
 }
