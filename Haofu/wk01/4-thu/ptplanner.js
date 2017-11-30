@@ -13,18 +13,13 @@ const GlenWaverlyLine = ["Flagstaff", "Melbourne Central", "Parliament", "Richmo
 const SandringhamLine = ["Southern Cross", "Richmond", "South Yarra", "Prahran", "Windsor"];
 
 /*
-* uniq is a function to delete duplicate elements in a array, be careful because it need to sort the Array
-* param: arr
+* Init
 */
-uniq = (arr) => {
-  return arr.sort().filter(function(item, pos, ary) {
-      return !pos || item != ary[pos - 1];
-  })
-}
-
 (() => {
   let AllStations = [];
-  AllStations = uniq(AllStations.concat(AlameinLine, GlenWaverlyLine, SandringhamLine));
+  AllStations = AllStations.concat(AlameinLine, GlenWaverlyLine, SandringhamLine).sort().filter(function(item, pos, ary) {
+      return !pos || item != ary[pos - 1];
+  });
 
   let stationList = '';
   for (var i = 0; i < AllStations.length; i++) {
@@ -39,37 +34,15 @@ document.querySelector('button').addEventListener("click", () => {
   let dest = document.querySelector('.dest').value;
   // alert(orig + " " + dest);
 
-  // divide each train line into two sub line
-  let AlameinLine1 = AlameinLine.slice(0, AlameinLine.indexOf("Richmond")+1);
-
-  let AlameinLine2 = AlameinLine.slice(AlameinLine.indexOf("Richmond"));
-
-  let GlenWaverlyLine1 = GlenWaverlyLine.slice(0, GlenWaverlyLine.indexOf("Richmond")+1);
-
-  let GlenWaverlyLine2 = GlenWaverlyLine.slice(GlenWaverlyLine.indexOf("Richmond"));
-
-  let SandringhamLine1 = SandringhamLine.slice(0, SandringhamLine.indexOf("Richmond")+1);
-
-  let SandringhamLine2 = SandringhamLine.slice(SandringhamLine.indexOf("Richmond"));
-
-  // console.log(AlameinLine1);
-  // console.log(AlameinLine2);
-  // console.log(GlenWaverlyLine1);
-  // console.log(GlenWaverlyLine2);
-  // console.log(SandringhamLine1);
-  // console.log(SandringhamLine2);
   let allLines = {
-    "AlameinLine1" : AlameinLine1,
-    "AlameinLine2" : AlameinLine2,
-    "GlenWaverlyLine1" : GlenWaverlyLine1,
-    "GlenWaverlyLine2" : GlenWaverlyLine2,
-    "SandringhamLine1" : SandringhamLine1,
-    "SandringhamLine2" : SandringhamLine2
+    "AlameinLine" : AlameinLine,
+    "GlenWaverlyLine" : GlenWaverlyLine,
+    "SandringhamLine" : SandringhamLine
   };
 
   if (orig === dest) {
     console.log("You don't need to travel at all!");
-    document.querySelector('.result').innerHTML = "You don't need to travel at all!";
+    document.querySelector('.result').innerHTML = "<p>You don't need to travel at all!</p>";
   } else {
 
     let origLine, destLine;
@@ -84,14 +57,14 @@ document.querySelector('button').addEventListener("click", () => {
         if (allLines[key].indexOf(orig)>=0) origLine = allLines[key];
         if (allLines[key].indexOf(dest)>=0) destLine = allLines[key];
       }
-      let firstHalf = buildRoute(origLine, orig, "Richmond");
-      let secondHalf = buildRoute(destLine, "Richmond", dest);
+      let intersections = findIntersection(origLine, destLine);
+      let firstHalf = buildRoute(origLine, orig, intersections[0]);
+      let secondHalf = buildRoute(destLine, intersections[0], dest);
       let combineRoute = firstHalf.concat(secondHalf).filter(function(item, pos, ary) {
           return !pos || item != ary[pos - 1];
       });
       printRoute(combineRoute);
     }
-
   }
 
 });
@@ -107,13 +80,16 @@ buildRoute = (route, orig, dest) => {
   let end = route.indexOf(dest);
 
   if (start>end) {
-    result = route.slice(end, start+1).reverse();
+    return route.slice(end, start+1).reverse();
   } else {
-    result = route.slice(start, end+1);
+    return route.slice(start, end+1);
   }
-  return result;
 }
 
+/*
+* printRoute takes a route and print it out to the page
+* param route
+*/
 printRoute = (route) => {
 
   // Melbourne Central -----> Parliament -----> Richmond
@@ -135,4 +111,15 @@ printRoute = (route) => {
       ${route.length-1} stops total
     </p>
     `;
+}
+
+/*
+* findIntersection takes two array of stations and return an intersection array with all the intersections
+* param: route1
+* param: route2
+*/
+findIntersection = (route1, route2) => {
+  return intersectionArr = route1.filter(function(val) {
+    return route2.indexOf(val) != -1;
+  });
 }
