@@ -1,0 +1,104 @@
+* {
+  background-color: #d6d6d6;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  text-align: center;
+}
+
+a, span {
+  text-decoration: none;
+  background-color: white;
+  color: #f63a05;
+  font-weight: bold;
+}
+
+.topBar {
+  width: 100%;
+  height: 150px;
+  background-image: url("../images/background.jpg");
+}
+
+header .logo {
+  background-color: rgba(0, 0, 0, 0);
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  margin-left: -108px;
+}
+
+main {
+  width: 1000px;
+  margin-top: 130px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  text-align: left;
+}
+
+article {
+  width: 640px;
+  float: left;
+  background-color: white;
+  padding: 20px;
+}
+
+article div {
+  margin-bottom: 50px;
+  background-color: white;
+}
+
+article div h2 {
+  margin: 15px;
+  margin-left: 0;
+  background-color: white;
+}
+
+article div p {
+  margin-top: 15px;
+  background-color: white;
+}
+
+.postInfo {
+  border-top: 1px dotted black;
+  border-bottom: 1px solid black;
+  height: 40px;
+  line-height: 40px;
+}
+
+aside {
+  width: 340px;
+  float: right;
+  padding: 30px 20px 50px 20px;
+  background-color: white;
+}
+
+aside ul {
+  background-color: white;
+  padding-bottom: 20px;
+}
+
+aside ul li {
+  list-style: none;
+  background-color: white;
+  padding-bottom: 5px;
+}
+
+.sideSection {
+  display: block;
+  padding-bottom: 15px;
+  color: black;
+}
+
+aside img {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+footer {
+  margin-top: 30px;
+}
