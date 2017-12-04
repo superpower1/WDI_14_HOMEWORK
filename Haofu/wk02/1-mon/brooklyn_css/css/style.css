@@ -1,0 +1,29 @@
+a {
+  text-decoration: none;
+}
+
+p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+h1 {
+  color: #5a5a5a;
+  font-size: 20px;
+}
+
+.wrapper {
+  /*width: 80vw;*/
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.date {
+  color: blue;
+  font-size: 14px;
+}
+
+.press img {
+  margin-top: 20px;
+  border: 5px solid #c5c5c5;
+}
