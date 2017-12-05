@@ -1,0 +1,182 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+}
+
+p {
+  text-align: justify;
+  font-size: 14px;
+}
+
+li {
+  font-size: 14px;
+}
+
+header {
+  width: 80%;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+header h1, h2 {
+  float: left;
+}
+
+header h1 {
+  color: #dd0000;
+  font-size: 40px;
+}
+
+header h2 {
+  margin-left: 50px;
+  height: 56px;
+  line-height: 30px;
+  padding-top: 19px;
+  vertical-align: bottom;
+  color: #888;
+}
+
+main {
+  width: 80%;
+  margin: 50px auto;
+  overflow: hidden;
+}
+
+nav {
+  width: 80%;
+  margin: 0 auto;
+  height: 50px;
+}
+
+nav ul li {
+  float: left;
+  display: inline-block;
+  background-color: black;
+  color: white;
+  width: 16%;
+  height: 50px;
+  margin-right: .6%;
+  line-height: 50px;
+  text-align: center;
+}
+
+main article {
+  width: 67%;
+  float: left;
+}
+
+main article .time {
+  font-size: 24px;
+  color: #ccc;
+}
+
+main article h3 {
+  font-size: 26px;
+}
+
+main article img {
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+
+.first, .second {
+  border-bottom: 1px solid #ccc;
+}
+
+.second {
+  margin-top: 50px;
+}
+
+main article p::first-letter {
+  font-size: 62px;
+  color: #ccc;
+  display: inline-block;
+  line-height: 50px;
+  padding-top: 5px;
+  padding-bottom: 20px;
+  margin-right: 14px;
+  float: left;
+}
+
+main aside {
+  width: 27%;
+  float: left;
+  margin-top: 28px;
+  margin-left: 40px;
+}
+
+main aside h4 {
+  color: #888;
+  font-size: 16px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.more {
+  color: #dd0000;
+  text-align: right;
+  margin-top: 25px;
+  margin-bottom: 33px;
+}
+
+.ad {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.popPosts ul {
+  color: #ccc;
+  list-style: none;
+}
+
+.popPosts ul li {
+  color: #dd0000;
+  padding-left: 2em;
+}
+
+.popPosts ul li::before {
+  content: "•";
+  color: #888;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+footer {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.footerNav ul {
+  overflow: hidden;
+}
+
+.footerNav ul li{
+  float: left;
+  display: inline-block;
+  padding-right: 8px;
+  margin-left: 8px;
+  color: #dd0000;
+  border-right: 1px solid #ccc;
+}
+
+.footerNav ul li:first-child {
+  margin-left: 0;
+}
+
+.footerNav ul li:last-child {
+  border-right: 0;
+}
+
+.copyright {
+  margin-top: 28px;
+  margin-bottom: 50px;
+  color: #ccc;
+}
