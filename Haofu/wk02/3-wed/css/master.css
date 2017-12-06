@@ -12,19 +12,24 @@
 header {
   display: flex;
   align-items: center;
-  height: 100px;
+  justify-content: center;
+  height: 80px;
 }
 
 .logo {
   width: 200px;
-  height: 50px;
+  height: 60px;
   background-color: red;
   display: inline-block;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  text-align: center;
+  line-height: 60px;
 }
 
 header h1 {
   display: inline-block;
-  align-self: center;
 }
 
 main {
@@ -35,21 +40,40 @@ main {
   align-items: center;
 }
 
-.saving {
+.saving, .checking {
   width: 200px;
-  height: 180px;
+  height: 190px;
   background-color: orange;
   text-align: center;
 }
 
 .checking {
-  width: 200px;
-  height: 180px;
   background-color: yellow;
-  text-align: center;
+}
+
+.saving input, .checking input {
+  width: 80%;
+  height: 30px;
+}
+
+.saving h2, .checking h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .balance {
   display: block;
   font-size: 35px;
+}
+
+.button {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button button {
+  width: 76px;
 }
