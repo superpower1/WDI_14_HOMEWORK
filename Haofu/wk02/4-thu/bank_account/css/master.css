@@ -1,0 +1,79 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+}
+
+.logo {
+  width: 200px;
+  height: 60px;
+  background-color: red;
+  display: inline-block;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  text-align: center;
+  line-height: 60px;
+}
+
+header h1 {
+  display: inline-block;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.saving, .checking {
+  width: 200px;
+  height: 190px;
+  background-color: orange;
+  text-align: center;
+}
+
+.checking {
+  background-color: yellow;
+}
+
+.saving input, .checking input {
+  width: 80%;
+  height: 30px;
+}
+
+.saving h2, .checking h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.balance {
+  display: block;
+  font-size: 35px;
+}
+
+.button {
+  margin-top: 5px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.button button {
+  width: 76px;
+}
