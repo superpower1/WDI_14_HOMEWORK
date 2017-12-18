@@ -75,7 +75,6 @@ document.querySelector('button').addEventListener("click", () => {
 * param: dest
 */
 buildRoute = (route, orig, dest) => {
-  let result = [];
   let start = route.indexOf(orig);
   let end = route.indexOf(dest);
 
