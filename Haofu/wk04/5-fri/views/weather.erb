@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Weather</title>
+    <link rel="stylesheet" href="./css/main.css">
+  </head>
+  <body>
+
+    <h1>Weather of Australia</h1>
+    <form method="GET" action="/">
+      <select class="" name="city">
+        <option value="Sydney">Sydney</option>
+        <option value="Melbourne">Melbourne</option>
+        <option value="Adelaide">Adelaide</option>
+      </select>
+      <input type="submit" value="Check">
+    </form>
+    <div class="weather">
+      <div class="city">
+        <%= @city%>
+        <%= @time%>
+      </div>
+      <div class="text">
+        <%= @text%>
+      </div>
+      <div>
+        <img src=<%= @img_url%> alt="">
+      </div>
+      <div class="temp">
+        <%= @temp%> &deg;C
+      </div>
+      <div class="desc">
+        <%= @desc%>
+      </div>
+    </div>
+
+  </body>
+</html>
