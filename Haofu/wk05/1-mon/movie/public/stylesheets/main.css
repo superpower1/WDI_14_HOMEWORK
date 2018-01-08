@@ -1,7 +1,5 @@
-.info-table {
-  border: 1px solid black;
-}
 
 .info-table td {
   border: 1px solid black;
+  font-size: 20px;
 }

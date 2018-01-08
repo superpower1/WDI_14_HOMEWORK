@@ -10,9 +10,11 @@ get '/movie' do
   movie_name = params[:movie_name]
   result = HTTParty.get("http://www.omdbapi.com/?apikey=2f6435d9&t=#{movie_name}").parsed_response
   @info = result.select do |key, value|
-    ["Title", "Year", "Rated"].include?(key)
+    ["Title", "Year", "Rated", "Runtime", "Director"].include?(key)
   end
   @imgSrc = result["Poster"]
+  @actors = result["Actors"].split(',')
+  @tomato = result["Ratings"].find{|rating| rating["Source"] == "Rotten Tomatoes"}["Value"]
   erb :movie
 end
 
