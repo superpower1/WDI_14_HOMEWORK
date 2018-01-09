@@ -3,7 +3,13 @@
     <div class="col-lg-2 col-ls-0">
     </div>
     <section class="col-lg-4 col-ls-12">
-      <img src="<%= @imgSrc %>" alt="poster" class="poster">
+      <% if @isPoster %>
+        <img src="<%= @imgSrc %>" alt="poster" class="poster">
+      <% else %>
+        <div class="img-placeholder">
+          <span>Poster not available</span>
+        </div>
+      <% end %>
     </section>
     <section class="col-lg-4 col-ls-12 info-table">
       <table>
