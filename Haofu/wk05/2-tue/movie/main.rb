@@ -10,6 +10,10 @@ get '/movie' do
   movie_id = params[:movie_id]
   result = HTTParty.get("http://www.omdbapi.com/?apikey=2f6435d9&i=#{movie_id}").parsed_response
 
+  def store_search
+    
+  end
+
   def render_error(msg)
     @error_msg = msg
     erb :not_found

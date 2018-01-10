@@ -41,7 +41,9 @@ body, html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 320px;
+  width: 300px;
+  height: auto;
+  padding: 0;
   box-sizing: border-box;
   overflow: hidden;
 }

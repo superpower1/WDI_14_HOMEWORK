@@ -1,9 +1,9 @@
 
-<ul>
+<!-- <ul>
   <% @movie_list.each do |movie| %>
     <li><a href="/movie?movie_id=<%= movie["imdbID"] %>"><%= movie["Title"] %></a></li>
   <% end %>
-</ul>
+</ul> -->
 
 <div class="masonry">
   <% @movie_list.each do |movie| %>
@@ -19,7 +19,6 @@
         			<a href="#"><span class="icon-eye"></span></a>
         			<a href="#"><span class="icon-paper-clip"></span></a>
         		</p>
-        		<p class="description"></p>
         	</figcaption>
         </figure>
       </div>
