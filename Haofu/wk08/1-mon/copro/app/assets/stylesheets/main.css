@@ -1,0 +1,53 @@
+body {
+  background-color: azure;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.project {
+  width: 50%;
+  background-color: mistyrose;
+}
+
+.project .title {
+  display: none;
+}
+
+.project img {
+  /* To remove space under image */
+  display: block;
+}
+
+.comments {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
+@media (min-width: 700px) {
+  .project {
+    width: 25%;
+  }
+  .project .title {
+    display: block;
+  }
+}
+.project-details {
+  width: 500px;
+  /* height: 300px; */
+  position: relative;
+}
+.project-details img {
+
+}
+
+.project-details span {
+  position: absolute;
+  font-size: 30px;
+  color: red;
+  right: 10px;
+  top: 10px;
+}

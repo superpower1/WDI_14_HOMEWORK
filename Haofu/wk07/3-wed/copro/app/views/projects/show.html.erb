@@ -1,0 +1,36 @@
+
+<div class="project-details">
+  <h2><%= @project.title %></h2>
+  <img src="<%= @project.preview.url %>" alt="">
+  <span>&#9829;</span>
+</div>
+
+<form class="" action="/likes" method="post">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="hidden" name="project_id" value="<%= @project.id %>">
+  <span class="like-counter"><%= @project.likes.count %></span>
+  <button type="submit" name="button">LIKE</button>
+</form>
+
+<div>
+  <form class="" action="/comments" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="hidden" name="project_id" value="<%= @project.id %>">
+    <textarea name="body" rows="8" cols="80"></textarea>
+    <button type="submit" name="button">Add comment</button>
+  </form>
+  <div>
+    <% @project.comments.each do |comment| %>
+      <div class="comments">
+        <span><%= user_name(comment.user_id) %> says:</span>
+        <p><%= comment.body %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.querySelector('.project-details span').addEventListener('click', event => {
+    document.querySelector('.like-counter').textContent++;
+  });
+</script>
