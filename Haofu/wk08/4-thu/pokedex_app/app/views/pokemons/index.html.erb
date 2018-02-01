@@ -1,0 +1,42 @@
+<a href="/pokemons/search">Search</a>
+
+<table>
+  <thead>
+    <tr>
+      <td>Species</td>
+      <td>Nickname</td>
+      <td>Level</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pokemons.each do |pokemon| %>
+      <tr data-id="<%= pokemon.id %>">
+        <td><%= pokemon.species %></td>
+        <td><%= pokemon.nickname %></td>
+        <td><%= pokemon.level %></td>
+        <td>
+          <button name="button" class="release-btn">Release</button>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<a href="/pokemons/new">Add New</a>
+
+<script type="text/javascript">
+  $('.release-btn').on('click', e=>{
+    const id = $(e.target).closest('tr').data().id;
+    const options = {
+      url: `/pokemons/${id}`,
+      method: 'delete'
+    }
+    $.ajax(options).done(res=>{
+      console.log(res);
+      if (res.result=="success") {
+        $(e.target).closest('tr').remove();
+      }
+    })
+  })
+
+</script>

@@ -1,0 +1,38 @@
+
+<input type="text" name="search-result" value="" placeholder="Nickname">
+<button type="submit" name="button">Search</button>
+<table>
+  <thead>
+    <tr>
+      <td>Species</td>
+      <td>Nickname</td>
+      <td>Level</td>
+    </tr>
+  </thead>
+  <tbody class="result">
+
+  </tbody>
+</table>
+
+<script type="text/javascript">
+  $('button').on('click', e=>{
+    const options = {
+      url: "/pokemons/search",
+      method: 'post',
+      data: {
+        nickname: $('input').val()
+      }
+    }
+    $('.result').empty();
+    $.ajax(options).done(res=>{
+      console.log(res.result);
+      res.result.forEach(item=>{
+        const $species = $('<td>').text(item.species);
+        const $nickname = $('<td>').text(item.nickname);
+        const $level = $('<td>').text(item.level);
+        $('.result').append($('<tr>').append($species, $nickname, $level))
+      })
+    })
+  })
+
+</script>
